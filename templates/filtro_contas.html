@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Filtrar Contas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Filtrar Contas a Pagar</h1>
+    
+    <form method="POST" action="{{ url_for('filtrar_contas_por_credor_status') }}">
+        <div class="form-group">
+            <label for="credor_id">Credor</label>
+            <select id="credor_id" name="credor_id" class="form-control">
+                <option value="">Selecione o Credor</option>
+                {% for credor in credores %}
+                    <option value="{{ credor.id }}">{{ credor.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" class="form-control">
+                <option value="">Selecione o Status</option>
+                <option value="a pagar">A Pagar</option>
+                <option value="pago">Pago</option>
+                <option value="em atraso">Em Atraso</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+    {% if contas %}
+        {% if contas|length == 0 %}
+            <p>O credor não possui contas cadastradas.</p>
+        {% else %}
+            <h2>Resultados</h2>
+            <ul>
+                {% for conta in contas %}
+                    <li>Credor: {{ conta.credor.nome }} - Valor: {{ conta.valor }} - Vencimento: {{ conta.data_vencimento.strftime('%d/%m/%Y') }} - Status: {{ conta.status }}</li>
+                     <form method="POST" action="{{ url_for('excluir_conta', id=conta.id) }}" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir esta conta?');">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% else %}
+        <p>Nenhuma conta encontrada.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Voltar para a Tela Inicial</a>
+</div>
+{% endblock %}

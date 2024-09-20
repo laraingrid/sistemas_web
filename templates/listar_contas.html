@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contas a Pagar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Contas a Pagar</h1>
+    </form>
+    <form action="{{ url_for('handle_contas_a_pagar') }}" method="GET">
+        <div>
+            <label for="filter_credor_id">Credor ID:</label>
+            <input type="number" id="filter_credor_id" name="credor_id">
+        </div>
+        <div>
+            <label for="filter_status">Status:</label>
+            <select id="filter_status" name="status">
+                <option value="">Todos</option>
+                <option value="a pagar">A Pagar</option>
+                <option value="paga">Paga</option>
+                <option value="em atraso">Em Atraso</option>
+            </select>
+        </div>
+        <button type="submit">Filtrar</button>
+    </form>
+        {% if contas %}
+            <ul>
+                {% for conta in contas %}
+                    <li>Credor ID: {{ conta.credor_id }} - Valor: {{ conta.valor }} - Data de Vencimento: {{ conta.data_vencimento }} - Status: {{ conta.status }} </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma conta encontrada para os filtros aplicados.</p>
+        {% endif %}
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Voltar para a Tela Inicial</a>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/* estilo.css */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(220, 10%, 96%); 
+  font-family: 'Roboto', sans-serif; 
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px; /* Maior espaçamento para dar mais "respiro" */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais suave e maior */
+  max-width: 900px; /* Largura ajustada */
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px; /* Fonte maior e mais impactante */
+  color: #333;
+  text-align: center; /* Centralizar título */
+}
+
+p {
+  font-size: 18px; /* Aumentar tamanho do texto */
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6; /* Melhorar espaçamento entre linhas */
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #f9f9f9; /* Cor mais clara para contraste */
+  padding: 30px; /* Mais espaçamento interno */
+  flex: 1;
+  min-width: 280px; /* Cartões um pouco mais largos */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); 
+}
+
+.card h3 {
+  margin-top: 20px;
+  font-size: 1.7rem;
+  color: #34495e;
+}
+
+.card p {
+  font-size: 1.3rem;
+  color: #3498db;
+}
+
+.card i {
+  font-size: 3.5rem;
+  color: #2ecc71;
+}
+
+.action-buttons {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 25px; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s; /* Suavizar hover */
+}
+
+.btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.05); /* Aumenta um pouco no hover */
+}

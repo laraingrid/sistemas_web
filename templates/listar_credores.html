@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}Lista de Credores{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Lista de Credores</h2>
+    <ul id="lista-credores" class="list-group">
+        {% for credor in credores %}
+        <li class="list-group-item">
+            ID: {{ credor.id }} 
+                {{ credor.nome }}
+             CNPJ: {{ credor.cnpj }}
+             Contato: {{ credor.contato }}
+        </li>
+        <form method="POST" action="{{ url_for('excluir_credor', id=credor.id) }}" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este credor?');">
+            <button type="submit">Excluir</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('home') }}" class="btn btn-secondary">Voltar para a Tela Inicial</a>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Contas {{ status }} do Credor {{ credor.nome }}</h1>
+    <ul>
+        {% if contas %}
+            {% for conta in contas %}
+                <li>Valor: {{ conta.valor }}, Vencimento: {{ conta.data_vencimento.strftime('%d/%m/%Y') }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Nenhuma conta encontrada para o credor {{ credor.nome }} com status {{ status }}.</li>
+        {% endif %}
+    </ul>
+    <a href="{{ url_for('handle_contas_a_pagar') }}">Voltar</a>
+</div>

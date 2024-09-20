@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Contas a Pagar{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Adicione estilos adicionais aqui, se necessário -->
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="{{ url_for('handle_credores') }}">Credores</a></li>
+            <li><a href="{{ url_for('list_credores') }}">Listar Credores</a></li>
+            <li><a href="{{ url_for('filtrar_contas_por_credor_status') }}">Filtrar Contas</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <!-- Bloco para mensagens de feedback -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Bloco de conteúdo principal -->
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
